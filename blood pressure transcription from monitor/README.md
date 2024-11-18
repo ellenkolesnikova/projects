@@ -8,7 +8,7 @@
 
 To run this code, simply run the following command:
 
-    python3 transcribe_digits.py
+    python3 -W ignore transcribe_digits.py
 
 **Digit recognition steps in `transcribe_digits.py`**
 
