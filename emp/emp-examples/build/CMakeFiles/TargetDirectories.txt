@@ -1,7 +1,0 @@
-/Users/Ellen/Desktop/coding/emp/emp-examples/build/CMakeFiles/Millionaire.dir
-/Users/Ellen/Desktop/coding/emp/emp-examples/build/CMakeFiles/GCD.dir
-/Users/Ellen/Desktop/coding/emp/emp-examples/build/CMakeFiles/CircuitFile.dir
-/Users/Ellen/Desktop/coding/emp/emp-examples/build/CMakeFiles/Set_Intersection.dir
-/Users/Ellen/Desktop/coding/emp/emp-examples/build/CMakeFiles/Testing_Arr.dir
-/Users/Ellen/Desktop/coding/emp/emp-examples/build/CMakeFiles/edit_cache.dir
-/Users/Ellen/Desktop/coding/emp/emp-examples/build/CMakeFiles/rebuild_cache.dir

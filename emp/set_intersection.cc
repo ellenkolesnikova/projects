@@ -1,12 +1,9 @@
 #include <emp-tool/emp-tool.h>
 #include <emp-tool/io/net_io_channel.h>
 #include <emp-sh2pc/emp-sh2pc.h>
-#include "/Users/Ellen/Desktop/coding/emp/emp-tool/emp-tool/circuits/array_edited.h"
+#include "array_edited.h"
 #include <vector>
 #include <chrono>
-
-
-
 
 using namespace emp;
 
@@ -16,12 +13,8 @@ const int BOUND=1000;
 
 // individual number finding in set
 Bit individual_set_intersect(int bound, Integer val, Integer set[]) {
-
-    
-
     Bit found = {false};
     const Bit ONE = {true};
-    //auto start = std::chrono::high_resolution_clock::now();
     for (int i=0; i<bound; i++) {
         // cond is true if val == set[i]
         Bit cond = val==set[i];
@@ -31,18 +24,13 @@ Bit individual_set_intersect(int bound, Integer val, Integer set[]) {
         found = cond.If(found, ONE);
 
     }
-    //auto end = std::chrono::high_resolution_clock::now();
-
-    //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end-start);
-
-    //std::cout << "Time taken in individual set intersect: " << duration.count() << " microseconds" << endl;
     
     return found;
     
 }
 
-// set intersection function
-/*std::vector<Integer> set_intersect(int bound, Integer a[], Integer b[]) {
+// set intersection function without iterator
+std::vector<Integer> set_intersect(int bound, Integer a[], Integer b[]) {
     std::vector<Integer> curr_vec;
     const Integer INTEGER_INF {32, EMP_INF, PUBLIC};
 
@@ -59,8 +47,9 @@ Bit individual_set_intersect(int bound, Integer val, Integer set[]) {
     }
     return curr_vec;
 
-}*/
+}
 
+// set intersection function with iterator (is faster)
 std::vector<Integer> set_intersect(std::vector<Integer> a, std::vector<Integer> b) {
     const Integer INTEGER_INF {32, EMP_INF, PUBLIC};
     std::vector<Integer> result;
@@ -90,22 +79,11 @@ Array<Integer> iterator_set_intersect(Array<Integer> a, Array<Integer> b) {
     const Bit ONE = {true};
 
     for (Integer a_val : a) {
-        //auto start = std::chrono::high_resolution_clock::now();
         Bit found = {false};
 
         for (Integer b_val : b) {
             Bit cond = a_val==b_val;
             found = cond.If(found, ONE);
-            
-
-            //auto start = std::chrono::high_resolution_clock::now();
-            //auto end = std::chrono::high_resolution_clock::now();
-
-            //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end-start);
-
-            //std::cout << "Time taken in iterator function to append: " << duration.count() << " microseconds" << endl;
-            
-
             
         }
         Integer x = INTEGER_INF.If(found, a_val);
@@ -141,7 +119,7 @@ int main(int argc, char** argv) {
         // this sets up a channel for alice and bob to interact
         // alice is the server, hence the nullptr
         NetIO io {nullptr, 8888};
-        // sets up the garble garble
+        // sets up the garbled circuit
         setup_semi_honest(&io, ALICE);
 
 
@@ -152,7 +130,6 @@ int main(int argc, char** argv) {
 
         std::vector<Integer> a_vector;
         std::vector<Integer> b_vector;
-
 
         // filling arrays with alice and bob's inputs
         for (int i=0; i<BOUND; i++) {
@@ -177,13 +154,13 @@ int main(int argc, char** argv) {
 
         // compute the set intersection function
         //std::vector<Integer> vec;
-        /*auto start = std::chrono::high_resolution_clock::now();
+        auto start = std::chrono::high_resolution_clock::now();
         std::vector<Integer> encrypted_calculated_set = set_intersect(a_vector, b_vector);
         auto end = std::chrono::high_resolution_clock::now();
 
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);*/
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
 
-        //std::cout << "Time taken without iterator: " << duration.count() << " milliseconds" << endl;
+        std::cout << "Time taken without iterator: " << duration.count() << " milliseconds" << endl;
         
         
         auto start1 = std::chrono::high_resolution_clock::now();
@@ -192,22 +169,22 @@ int main(int argc, char** argv) {
 
         auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(end1-start1);
 
-        //std::cout << "Time taken with iterator: " << duration1.count() << " milliseconds" << endl;
+        std::cout << "Time taken with iterator: " << duration1.count() << " milliseconds" << endl;
         
-        //std::vector<int> final_set;
+        std::vector<int> final_set;
         std::vector<int> final_set_iterator;
         // get rid of blank values in the set and reveal correct values
-        /*for (Integer val : encrypted_calculated_set) {
+
+        for (Integer val : encrypted_calculated_set) {
             int new_Val = val.reveal<int>();
             if (new_Val != EMP_INF) {
                 final_set.push_back(new_Val);
             }
-        }*/
+        }
 
         for (Integer val : iterator_encrypted_calculated_set) {
             int new_Val = val.reveal<int>();
             if (new_Val != EMP_INF) {
-                //std::cout<<"hi\n";
                 final_set_iterator.push_back(new_Val);
             }
         }
@@ -264,13 +241,13 @@ int main(int argc, char** argv) {
 
         // compute the set intersection function
         //std::vector<Integer> vec;
-        /*auto start = std::chrono::high_resolution_clock::now();
+        auto start = std::chrono::high_resolution_clock::now();
         std::vector<Integer> encrypted_calculated_set = set_intersect(a_vector, b_vector);
         auto end = std::chrono::high_resolution_clock::now();
 
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);*/
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
 
-        // << "Time taken without iterator: " << duration.count() << " milliseconds" << endl;
+        std::cout << "Time taken without iterator: " << duration.count() << " milliseconds" << endl;
         
 
         auto start1 = std::chrono::high_resolution_clock::now();
@@ -279,18 +256,18 @@ int main(int argc, char** argv) {
 
         auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(end1-start1);
 
-        // << "Time taken with iterator: " << duration1.count() << " milliseconds" << endl;
+        std::cout << "Time taken with iterator: " << duration1.count() << " milliseconds" << endl;
 
         
         //std::vector<int> final_set;
         std::vector<int> final_set_iterator;
         // get rid of blank values in the set and reveal correct values
-        /*for (Integer val : encrypted_calculated_set) {
+        for (Integer val : encrypted_calculated_set) {
             int new_Val = val.reveal<int>();
             if (new_Val != EMP_INF) {
                 final_set.push_back(new_Val);
             }
-        }*/
+        }
 
         for (Integer val : iterator_encrypted_calculated_set) {
             int new_Val = val.reveal<int>();
