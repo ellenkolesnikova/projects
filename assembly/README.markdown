@@ -2,7 +2,7 @@
 
 **To run**
 
-In one terminal, run:
+In one terminal, create a txt file (e.g. `hello.txt`) and run:
 
     ./server
 
@@ -10,6 +10,6 @@ In another terminal, run:
 
     nc localhost 80
 
-Create a txt file (e.g. `hello.txt`). In the same terminal as the nc command, get the txt file's contents using an HTTP GET request:
+Get the txt file's contents using an HTTP GET request, served by the server:
 
     GET hello.txt HTTP/1.0
