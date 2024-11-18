@@ -1,0 +1,45 @@
+img36.jpg
+green
+sbp:  121
+dbp:  81
+
+img247.jpg
+gray
+sbp:  116
+dbp:  75
+
+img285.jpg
+green
+sbp:  81
+dbp:  69
+
+img124.jpg
+yellow
+sbp:  32
+dbp:  80
+
+img269.jpg
+yellow
+sbp:  34
+dbp:  73
+
+img159.jpg
+green
+sbp:  104
+dbp:  71
+
+img163.jpg
+yellow
+sbp:  130
+dbp:  91
+
+img139.jpg
+green
+sbp:  92
+dbp:  60
+
+img112.jpg
+green
+sbp:  123
+dbp:  60
+
