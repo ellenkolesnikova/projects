@@ -1,6 +1,6 @@
 # transcribedigits
 
-*Digit recognition steps
+**Digit recognition steps
 1) Detect screen using YOLOv9 model
 2) Run regression model on YOLO-cropped screen to get screen color
 3) Run manual color detection program on uncropped image
