@@ -20,6 +20,9 @@ These steps are repeated for every image in test_imgs.
 5) If colors are different, choose color with higher confidence level, as outputted by the models
 6) Create a mask of the image based on detected screen color
 7) See if YOLO model detection is similar to mask detection
-8) If the two detections are not similar, ask user to retake image b/c algorithms aren’t agreeing with each other
-Otherwise proceed to adjust the perspective of the image to make up for possible warping of the image due to camera angle, crop YOLO-cropped images to obtain systolic and diastolic blood pressure readings, and transcribe the SBP and DBP cropped images with digit transcription neural networks
+8) If the two detections are not similar, ask user to retake image because the various algorithms aren’t agreeing with each other
 
+If the image does not need to be retaken...
+1) Proceed to adjust the perspective of the image to make up for possible warping of the image due to camera angle
+2) Crop YOLO-cropped images to obtain systolic and diastolic blood pressure readings
+3) Transcribe the SBP and DBP cropped images with digit transcription neural networks
