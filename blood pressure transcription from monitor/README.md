@@ -2,7 +2,7 @@
 
 **Purpose**
 
-As part of the [safe+natal project](https://safenatal.org/), `transcribe_digits.py` reads in images of iHealth blood pressure monitors from the test_imgs folder and transcribes them using the process outlined below. It saves the transcription and color of the screen for each image in the file `out.txt`. `cropped_dbp` and `cropped_sbp` are folders that contain processed cropped images of the diastolic and systolic readings from each of the larger monitor images. `yolov9`, `helper_files`, and `my_models` are folders that contain models used in the blood pressure monitor transcription (all models are trained by me, except for the digit transcription nerual network).
+This work is part of the [safe+natal project](https://safenatal.org/), a project aiming to improve pregnancy outcomes in Guatemala. `transcribe_digits.py` reads in images of iHealth blood pressure monitors from the test_imgs folder and transcribes them using the process outlined below. It saves the transcription and color of the screen for each image in the file `out.txt`. `cropped_dbp` and `cropped_sbp` are folders that contain processed cropped images of the diastolic and systolic readings from each of the larger monitor images. `yolov9`, `helper_files`, and `my_models` are folders that contain models used in the blood pressure monitor transcription (all models are trained by me, except for the digit transcription nerual network).
 
 **Running the code**
 
