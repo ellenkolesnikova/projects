@@ -10,6 +10,6 @@ In another terminal, run:
 
     nc localhost 80
 
-You can create a txt file (e.g. `hello.txt`) and get its contents using nc command:
+Create a txt file (e.g. `hello.txt`). In the same terminal as the nc command, get the txt file's contents using an HTTP GET request:
 
     GET hello.txt HTTP/1.0
