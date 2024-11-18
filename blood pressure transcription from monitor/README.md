@@ -1,9 +1,11 @@
 # transcribedigits
 
 **Purpose**
+
 transcribe_digits.py reads in images of iHealth blood pressure monitors from the test_imgs folder and transcribes them using the process outlined below. It saves the transcription and color of the screen for each image in the file out.txt. cropped_dbp and cropped_sbp are folders that contain processed cropped images of the diastolic and systolic readings from each of the larger monitor images. yolov9, helper_files, and my_models are folders that contain models used in the blood pressure monitor transcription (all models are trained by me, except for the digit transcription nerual network).
 
 **Digit recognition steps in transcribe_digits.py**
+
 These steps are repeated for every image in test_imgs.
 1) Detect screen using YOLOv9 model
 2) Rotate image so that the monitor is seen straight-on
